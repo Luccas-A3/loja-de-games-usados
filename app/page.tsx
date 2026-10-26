@@ -1,29 +1,24 @@
 import Image from "next/image";
+import AuthButtons from "@/app/components/AuthButtons"; // <--- Importando o componente
 
 export default function HomePage() {
   return (
-    /* Fundo da página: Roxo bem escuro (#0d0714) */
     <div className="min-h-screen bg-[#0d0714] text-slate-100 flex flex-col font-sans">
       
-      {/* HEADER: Aumentado em altura (h-28) e paddings */}
       <header className="w-full bg-[#180e25] border-b border-purple-900/50 shadow-md">
         
-        {/* PARTE SUPERIOR DO HEADER */}
         <div className="max-w-[110rem] mx-auto px-8 h-28 flex items-center justify-between">
           
-          {/* Nome do site à esquerda (+40% no tamanho do texto: text-4xl) */}
           <div className="flex items-center">
             <h1 className="text-4xl font-extrabold text-purple-300 tracking-wide hover:text-purple-200 transition-colors cursor-pointer">
               Douglas Games
             </h1>
           </div>
 
-          {/* Lado direito do header: Funções + Espaço para o Logo */}
           <div className="flex items-center gap-8">
             
-            {/* À esquerda do logo: Espaço para as funções do site */}
             <div className="flex items-center gap-6">
-              {/* Barra de busca ampliada (w-80, py-3, text-base) */}
+
               <div className="relative">
                 <input
                   type="text"
@@ -32,10 +27,7 @@ export default function HomePage() {
                 />
               </div>
 
-              {/* Botão de Conta (+40% de tamanho) */}
-              <button className="text-base font-medium text-slate-300 hover:text-purple-300 px-5 py-3 rounded-xl hover:bg-purple-900/40 transition">
-                Minha Conta
-              </button>
+              <AuthButtons />
 
               {/* Botão de Opções (+40% de tamanho) */}
               <button className="text-base font-medium text-slate-300 hover:text-purple-300 px-5 py-3 rounded-xl hover:bg-purple-900/40 transition">
@@ -76,7 +68,7 @@ export default function HomePage() {
         {/* TRÊS CARDS ALINHADOS HORIZONTALMENTE (Ampliados) */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full">
           
-          {/* Card 1 */}
+
           <div className="bg-[#180e25] rounded-2xl border border-purple-900/60 overflow-hidden shadow-2xl hover:border-purple-500/80 transition-all group cursor-pointer">
             <div className="h-64 bg-[#241537] flex items-center justify-center text-purple-300/60 text-lg font-medium">
               [ Capa do Jogo 1 ]
@@ -98,7 +90,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Card 2 */}
+
           <div className="bg-[#180e25] rounded-2xl border border-purple-900/60 overflow-hidden shadow-2xl hover:border-purple-500/80 transition-all group cursor-pointer">
             <div className="h-64 bg-[#241537] flex items-center justify-center text-purple-300/60 text-lg font-medium">
               [ Capa do Jogo 2 ]
@@ -120,7 +112,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Card 3 */}
+
           <div className="bg-[#180e25] rounded-2xl border border-purple-900/60 overflow-hidden shadow-2xl hover:border-purple-500/80 transition-all group cursor-pointer">
             <div className="h-64 bg-[#241537] flex items-center justify-center text-purple-300/60 text-lg font-medium">
               [ Capa do Jogo 3 ]
