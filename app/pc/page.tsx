@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { catalogoJogos } from "@/app/data/catalogo";
 import GameCard from "@/app/components/GameCard";
 
