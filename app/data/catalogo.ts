@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 export interface Jogo {
     id: string;
     titulo: string;
