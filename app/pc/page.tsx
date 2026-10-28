@@ -2,8 +2,16 @@ export const dynamic = "force-dynamic";
 import { catalogoJogos } from "@/app/data/catalogo";
 import GameCard from "@/app/components/GameCard";
 
-export default function PCPage() {
-  const jogosPC = catalogoJogos.filter((jogo) => jogo.categoria === "PC");
+export default async function PCPage() {
+  const jogosPC = await prisma.jogo.findMany({
+    where: {
+      plataforma: {
+        contains: "PC", // Permite capturar variações como "Xbox Series X", "Xbox One", etc.
+        mode: "insensitive", // Ignora maiúsculas/minúsculas
+      },
+    },
+    orderBy: { createdAt: "desc" },
+  });
 
   return (
     <div className="min-h-screen bg-[#0d0714] text-slate-100 p-8 md:p-16">

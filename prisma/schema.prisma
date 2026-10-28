@@ -16,6 +16,7 @@ model User {
   updatedAt     DateTime        @updatedAt
   sessions      Session[]
   accounts      Account[]
+  role          String          @default("USER") // Adicionado: "USER" por defeito, "ADMIN" para o dono  jogos         Jogo[]
   jogos         Jogo[]
   propostas     PropostaCompra[]
 
@@ -74,6 +75,7 @@ model Jogo {
   descricao   String
   imagemUrl   String?
   userId      String
+  imagem      String?
   user        User             @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt   DateTime         @default(now())
   updatedAt   DateTime         @updatedAt
