@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { cadastrarJogo } from "./actions";
 import { auth } from "@/lib/auth";
+import { aceitarProposta, recusarProposta } from "./actions"; // Importe as novas ações
 
 export const dynamic = "force-dynamic";
 
@@ -98,20 +99,37 @@ export default async function AdminPage() {
                       R$ {Number(proposta.valor).toFixed(2)}
                     </span>
                     <div className="flex gap-2">
-                      <button className="px-3 py-1 bg-green-600 hover:bg-green-500 text-xs rounded transition font-medium">
-                        Aceitar
-                      </button>
-                      <button className="px-3 py-1 bg-red-600 hover:bg-red-500 text-xs rounded transition font-medium">
-                        Recusar
-                      </button>
-                    </div>
+  <form action={async () => {
+    "use server";
+    await aceitarProposta(proposta.id);
+  }}>
+    <button 
+      type="submit"
+      className="px-3 py-1 bg-green-600 hover:bg-green-500 text-xs rounded transition font-medium cursor-pointer"
+    >
+      Aceitar
+    </button>
+  </form>
+
+  <form action={async () => {
+    "use server";
+    await recusarProposta(proposta.id);
+  }}>
+    <button 
+      type="submit"
+      className="px-3 py-1 bg-red-600 hover:bg-red-500 text-xs rounded transition font-medium cursor-pointer"
+    >
+      Recusar
+    </button>
+  </form>
+</div>
                   </div>
                 </div>
               ))}
             </div>
           )}
         </section>
-        <section className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-8">
+        <section className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-8 mt-10">
   <h2 className="text-xl font-semibold mb-4">Adicionar Novo Jogo ao Catálogo</h2>
   
   <form action={cadastrarJogo} className="grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -1,46 +1,48 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function SearchBar() {
+  const [termo, setTermo] = useState("");
   const router = useRouter();
-  const searchParams = useSearchParams();
-  
-  // Inicializa o input com a busca atual (se houver na URL)
-  const [query, setQuery] = useState(searchParams.get("q") || "");
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (query.trim()) {
-      router.push(`/catalogo?q=${encodeURIComponent(query.trim())}`);
-    } else {
-      router.push("/catalogo");
+    if (termo.trim()) {
+      router.push(`/pesquisa?q=${encodeURIComponent(termo)}`);
     }
   };
 
   return (
-    <form onSubmit={handleSearch} className="relative flex-1 max-w-md">
+    <form onSubmit={handleSearch} className="relative w-full sm:w-auto flex items-center">
       <input
         type="text"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        placeholder="Buscar jogos, plataformas..."
-        className="w-full bg-[#180e25] text-slate-100 placeholder-slate-400 px-4 py-2.5 pl-10 rounded-xl border border-purple-900/60 focus:outline-none focus:border-purple-500 transition"
+        value={termo}
+        onChange={(e) => setTermo(e.target.value)}
+        placeholder="Pesquisar jogos..."
+        className="w-full sm:w-64 bg-[#130b1e] text-slate-100 placeholder-slate-400 text-sm px-4 py-2.5 rounded-xl border border-purple-900/60 focus:outline-none focus:border-purple-500 transition-all shadow-inner"
       />
-      <svg
-        className="w-5 h-5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
+      <button
+        type="submit"
+        aria-label="Pesquisar"
+        className="absolute right-2.5 text-slate-400 hover:text-purple-300 transition-colors"
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-        />
-      </svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          />
+        </svg>
+      </button>
     </form>
   );
 }

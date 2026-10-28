@@ -31,8 +31,8 @@ export default async function HomePage() {
       
       {/* CABEÇALHO / NAVBAR */}
       <header className="w-full max-w-[100rem] mx-auto px-8 py-6 flex justify-between items-center border-b border-purple-900/40">
-        <h1 className="text-2xl font-extrabold text-purple-400 tracking-wider">
-          Douglas Games
+        <h1 className="text-xl sm:text-2xl font-extrabold text-purple-400 tracking-wider">
+        Douglas Games
         </h1>
 
         {/* Botão do Admin (só aparece se for ADMIN) */}
@@ -66,26 +66,22 @@ export default async function HomePage() {
         )}
       </header>
 
-      {/* CONTEÚDO PRINCIPAL */}
-      <main className="flex-1 max-w-[100rem] mx-auto px-8 pt-12 pb-24 flex flex-col items-center w-full">
-        
-        {/* Título da seção */}
-        <h2 className="text-4xl font-bold text-purple-200 mb-12 self-start border-l-8 border-purple-500 pl-4">
-          Jogos em Destaque
-        </h2>
+      <main className="flex-1 max-w-[100rem] mx-auto px-4 sm:px-8 pt-8 sm:pt-12 pb-24 flex flex-col items-center w-full">
+  
+      <h2 className="text-2xl sm:text-4xl font-bold text-purple-200 mb-8 sm:mb-12 self-start border-l-8 border-purple-500 pl-4">
+        Jogos em Destaque
+      </h2>
 
-        {jogosDestaque.length === 0 ? (
-          <p className="text-slate-400 self-start">Nenhum jogo em destaque no momento.</p>
-        ) : (
-          /* TRÊS CARDS ALINHADOS HORIZONTALMENTE VIA .MAP() */
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 w-full">
-            {jogosDestaque.map((jogo) => (
-              <GameCard key={jogo.id} jogo={jogo} />
-            ))}
-          </div>
-        )}
-
-      </main>
+          {jogosDestaque.length === 0 ? (
+      <p className="text-slate-400 self-start">Nenhum jogo em destaque no momento.</p>
+    ) : (
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-12 w-full">
+        {jogosDestaque.map((jogo) => (
+          <GameCard key={jogo.id} jogo={jogo} />
+        ))}
+      </div>
+    )}
+  </main>
 
     </div>
   );
