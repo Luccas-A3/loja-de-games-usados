@@ -114,7 +114,7 @@ export default async function AdminPage() {
         <section className="bg-gray-800 rounded-xl border border-gray-700 p-6 mb-8">
   <h2 className="text-xl font-semibold mb-4">Adicionar Novo Jogo ao Catálogo</h2>
   
-  <form action={cadastrarJogo} className="grid grid-cols-1 md:grid-cols-2 gap-4 mg">
+  <form action={cadastrarJogo} className="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div>
       <label className="block text-sm text-gray-400 mb-1">Título do Jogo *</label>
       <input
